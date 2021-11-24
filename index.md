@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+# Mechanisms of Action (MoA) Prediction
 
-You can use the [editor on GitHub](https://github.com/sumansahoo16/Mechanisms-of-Action-MoA-Prediction/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Problem Statement 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+In pharmacology, the term Mechanism of Action (MoA) refers to the specific biochemical interaction through which a drug substance produces its pharmacological effect.
+The task is predicting multiple targets of the Mechanism of Action (MoA) responses of different samples. Samples are drugs profiled at different time points and doses.
 
-### Markdown
+### Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Features with g- prefix are gene expression features and there are 772 of them (from g-0 to g-771)
+Features with c- prefix are cell viability features and there are 100 of them (from c-0 to c-99)
+cp_type, cp_time, cp_dose :  categorical features 
+PCA feature are used for all models with different n_components (50 genes + 15 cells for 1D-CNN, 600 genes + 50 cells for TabNet and DNN).
+Statistical features (such as mean, min, max, skew, kurt, (X_train>9).sum(axis=1) ) and combination features are used in Tabnet.
+Variance fillter is used in Tabnet and DNN.
+Sample Normalization
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sumansahoo16/Mechanisms-of-Action-MoA-Prediction/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Modelling
+- ResNet-like shallow NN
+- 2 Head NN
+- RNN
+- TabNet
